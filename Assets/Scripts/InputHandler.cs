@@ -9,11 +9,8 @@ public class InputHandler : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _moveAction = InputSystem.actions.FindAction("Move");
+       
         _lookAction = InputSystem.actions.FindAction("Look");
-        _jumpAction = InputSystem.actions.FindAction("Jump");
-
-        _jumpAction.performed += OnJumpPerformed;
 
         Cursor.visible = false;
 
@@ -23,16 +20,13 @@ public class InputHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 movementVector = _moveAction.ReadValue<Vector2>();
-        CharacterController.Move(movementVector);
+        
 
         Vector2 lookVector = _lookAction.ReadValue<Vector2>();
         CharacterController.Rotate(lookVector);
     }
 
-    private void OnJumpPerformed(InputAction.CallbackContext context)
-    {
-        CharacterController.Jump();
-    }
+    
+    
     
 }
